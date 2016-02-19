@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// LaserSwitchDeactivation Class taken from Unity 4 stealth tutorial
+// Original file: https://unity3d.com/learn/tutorials/projects/stealth/laser-grids
+//
+// Modified to set PlayerInventory::nearSwitch to true if colliding with, false otherwise.
+// This is then referenced in the PlayerInventory calss to determine if a mine can be placed
 public class LaserSwitchDeactivation : MonoBehaviour
 {
 	public GameObject laser;                

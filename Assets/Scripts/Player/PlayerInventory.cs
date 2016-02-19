@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// PlayerInventory class from stealth tutorial,
+// For original file see: https://unity3d.com/learn/tutorials/projects/stealth/the-key
+// Main addition is to support tracking of mine ownership.
+// Update function was added too which allows player to tap 'Z' key to place/activate a mine
 public class PlayerInventory : MonoBehaviour
 {
     public bool hasKey;         	// Whether or not the player has the key.
 	public bool hasMines;			// Whether or not player has picked up the mines yet
 	public bool nearSwitch;			// Can't place mines near a laser deactivation switch
-	//public MineState mineState;		// Can place mine by pressing 'Z' if not near laser deactivation button
 
 	[HideInInspector]
 	public MineTrigger currentMine;	

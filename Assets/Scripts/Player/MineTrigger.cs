@@ -2,6 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 
+// The mine trigger component is applied to the mine prefabs game object
+// When any colliders enter it's trigger collision sphere, 
+// they are added to HashSet currentlyIntersectingColliders.
+// When player taps 'Z' key and activates mine, Activate is called 
+// which loops over all colliders and checks if any colliding game objects
+// contain an EnemyHealth script.
+// This could be improved by setting a tag on objects that can be affected by mines,
+// and only processing those.
 public class MineTrigger : MonoBehaviour 
 {
 	public int damage = 100;

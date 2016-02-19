@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// EnemyHealth class is used to place enemy in a dying state, 
+// which triggers a dying animation in the EnemyAnimationController
+// EnemyHealth::TakeDamage is called from the MineTrigger class
+// if a mine activates while an enemy is near.
 public class EnemyHealth : MonoBehaviour 
 {
 	public bool isDead;
