@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// The Rotator clss simply rotates the mine prefab around the Y axis 
+// to draw attention to it.
 public class Rotator : MonoBehaviour 
 {
 	public float speed = 10f;

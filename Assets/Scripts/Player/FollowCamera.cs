@@ -58,7 +58,7 @@ public class FollowCamera : MonoBehaviour
 		{
 			if (character.CurrentState.State == MoveState.MovementState.Leaning)
 			{
-				// Set target object with transfrom to transition to
+				// Set target object with transform to transition to
 				LeanDetector detector = character.ActiveLeanDetector;
 				targetObject = detector.cameraAnchor;
 				
@@ -96,7 +96,10 @@ public class FollowCamera : MonoBehaviour
 			}
 		}
 	}
-	
+
+	// Perform any updates in LateUpdate to wait for physics to end
+	// If in a transitioning state, then update the transition instance
+	// by calling Interpolate
 	void LateUpdate()
 	{
 		switch (State)

@@ -1,8 +1,16 @@
 using UnityEngine;
 using System.Collections;
 
-// The PlayerMovement class is used to both control the players movement in each direction,
-// but it also manages changing states from moving freely to leaning up against a wall 
+// PlayerMovement originally from: https://unity3d.com/learn/tutorials/projects/stealth/player-movement
+// Modified substantially to handle leaning up against a wall, in addition to standard movement.
+//
+// It delegates any functionality for switching between movement states to separate state classes,
+// each of which returns whether or not a new state should be entered by returning the 
+// corresponding enum from HandleInput.
+// When a new state is entered, the current state is dereferenced, 
+// and a new state instance is created. (See SetState)
+// It also contains an event delegate for informing other classes about state changes.
+// Currently, just the FollowCamera class listens for this.
 public class PlayerMovement : MonoBehaviour
 {
 	// Event handler that dispatches events that the player has changed state
@@ -176,7 +184,7 @@ public class PlayerMovement : MonoBehaviour
 
 	public float RadiansToRotateToTarget(Vector3 targetDirection)
 	{
-		return RadiansToRotateToTarget(targetDirection, rigidbody.transform.forward.normalized); // todo: normalized needed?
+		return RadiansToRotateToTarget(targetDirection, rigidbody.transform.forward.normalized);
 	}
 
 	public float RadiansToRotateToTarget(Vector3 targetDirection, Vector3 directionToCompare)

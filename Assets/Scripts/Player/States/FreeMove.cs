@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// This state is used to move player in a particular direction
 public class FreeMove : MoveState 
 {
 	public FreeMove(PlayerMovement playerMovement)
@@ -8,7 +9,6 @@ public class FreeMove : MoveState
 		m_LeanStartTime = 0f;
 		m_NextState = State;
 		m_PlayerMovement = playerMovement;
-		//m_PlayerMovement.anim.SetBool(m_PlayerMovement.hash.leaningBool, false);
 	}
 
 	public override MovementState State
@@ -26,8 +26,6 @@ public class FreeMove : MoveState
 		MoveState.MovementState nextState = State;
 		if (CheckPushAgainstWall(horizontal, vertical))
 		{
-			//m_LeanTargetPosition = rigidbody.transform.position - (m_TargetRotation * m_PushToWallMagnitude);
-			//m_PositionBeforeLean = rigidbody.transform.position;
 			nextState = MoveState.MovementState.RotatingToLean;
 		}
 		

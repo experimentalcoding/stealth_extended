@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
+// If player is in Leaning state, they have leaned up against the wall.
+// This state checks if player has moved in opposite direction, 
+// and if so the MovementState.Free state should be entered
 public class Leaning : MoveState 
 {
 	public Leaning(PlayerMovement playerMovement)
 	{
 		m_NextState = State;
 		m_PlayerMovement = playerMovement;
-		//m_PlayerMovement.anim.SetBool(m_PlayerMovement.hash.leaningBool, true);
 	}
 	
 	public override MovementState State
@@ -36,7 +37,6 @@ public class Leaning : MoveState
 
 			if (HasDirectionalInput(horizontal, vertical) && rotateTo <= m_PlayerMovement.leanEndRotateThreshold) 
 			{
-				// todo: get out of state
 				m_NextState = MovementState.Free;
 			}
 		}

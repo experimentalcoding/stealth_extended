@@ -1,6 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
+// RotatingToLean manages updating players rotation so that they
+// end up facing away from a wall. 
+// Once the orientation is less than a threshold, the Leaning state is entered
 public class RotatingToLean : MoveState 
 {
 	public RotatingToLean(PlayerMovement playerMovement)
@@ -45,14 +48,10 @@ public class RotatingToLean : MoveState
 		float toRotate = Mathf.Rad2Deg * playerMovement.RadiansToRotateToTarget(targetDirection);
 		
 		playerMovement.Rotating(targetDirection.x, targetDirection.z, .5f);
-		
-		// Also move in closer against wall, todo: tidy
-		// todo: working well but put into own function
-//		Vector3 target = Vector3.Lerp(m_PositionBeforeLean, ActiveLeanDetector.transform.position, Time.deltaTime * 5.5f);
 
 		Vector3 targetPosition = playerMovement.ActiveLeanDetector.transform.position;
 		targetPosition.y = 0;
-		playerMovement.rigidbody.MovePosition(targetPosition); // todo: cache any properties
+		playerMovement.rigidbody.MovePosition(targetPosition);
 		
 		bool finishedRotating = Mathf.Abs (toRotate) < playerMovement.leanStartRotateThreshold;
 		return finishedRotating;
